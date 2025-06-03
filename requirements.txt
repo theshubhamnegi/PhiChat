@@ -3,3 +3,6 @@ uvicorn
 uuid
 llama-cpp-python
 pandas
+sentence-transformers
+chromadb
+PyMuPDF
