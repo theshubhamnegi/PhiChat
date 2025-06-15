@@ -44,14 +44,27 @@ http://127.0.0.1:8000
 ## 📁 File Structure
 
 ```
-.
-├── main.py                        # FastAPI app
-├── chat_log.csv                   # Chat history (auto-generated)
-├── Phi-3-mini-4k-instruct-q4.gguf  # GGUF model file (download manually)
-├── requirements.txt               # List of required Python packages
-└── README.md                      # This file
+PHICHAT/
+├── chat_log/
+│ ├── chat_log.csv # CSV file containing chat history
+│ └── chat_log.py # Script for handling chat logs
+├── llm_model/ # LLM backend or library files
+│ └── Phi-3-mini-4k-instruct...# LLM model file (Phi-3)
+├── rag/
+│ ├── strategies/ # Different RAG strategies implemented
+│ │ ├── init.py
+│ │ ├── basic.py
+│ │ ├── llm_only.py
+│ │ ├── multiquery.py
+│ │ ├── query_rewrite.py
+│ │ └── rerank.py
+│ ├── llm.py # LLM-related utility functions
+│ └── utils.py # General utility functions
+├── ui/
+│ └── html_template.py # HTML rendering template
+├── app.py # UI entry point or main server logic
+└── requirements.txt # Python dependencies
 ```
-
 ---
 
 ## 🧠 How It Works
@@ -68,7 +81,7 @@ http://127.0.0.1:8000
 2. The system retrieves relevant documents from the uploaded files.
 3. The question and retrieved context are sent to the Phi-3 Mini model.
 4. The generated answer is displayed.
-5. The question, answer, and request ID are logged to `chat_log.csv`.
+5. The question, answer, and request ID are logged to chat_log.csv.
 
 ### Steps for uploading files:
 
@@ -76,6 +89,11 @@ http://127.0.0.1:8000
 2. The system extracts and chunks the text content of the file into smaller pieces.
 3. The system generates embeddings for each chunk and stores them in a **ChromaDB** collection.
 4. These chunks are then available for retrieval when asking questions.
+
+### Steps for selecting RAG technique:
+
+1. You can upload a PDF file via the upload form.
+2. Select the drop-down menu and choose the RAG technique.
 
 ---
 
