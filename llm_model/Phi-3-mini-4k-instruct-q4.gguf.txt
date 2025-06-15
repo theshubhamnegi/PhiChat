@@ -1,0 +1,2 @@
+model: Phi-3-mini-4k-instruct-q4.gguf
+download: https://huggingface.co/microsoft/Phi-3-mini-4k-instruct-gguf/blob/main/Phi-3-mini-4k-instruct-q4.gguf
