@@ -6,3 +6,7 @@ pandas
 sentence-transformers
 chromadb
 PyMuPDF
+python-multipart
+streamlit
+watchdog
+rank_bm25

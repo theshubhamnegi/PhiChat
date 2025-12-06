@@ -1,7 +1,17 @@
 import fitz
 
 def extract_text(file):
-    doc = fitz.open(stream=file.file.read(), filetype="pdf")
+    # Handle FastAPI UploadFile
+    if hasattr(file, "file"):
+        content = file.file.read()
+    # Handle Streamlit UploadedFile or standard file object
+    else:
+        content = file.read()
+        # Reset cursor if possible, though usually read once
+        if hasattr(file, "seek"):
+            file.seek(0)
+            
+    doc = fitz.open(stream=content, filetype="pdf")
     return "\n".join(page.get_text() for page in doc)
 
 def chunk_text(text, chunk_size=500, overlap=50):

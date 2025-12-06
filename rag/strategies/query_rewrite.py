@@ -1,7 +1,7 @@
 import logging
 from rag.llm import query_phi
 
-def run(question, embedder, collection, request_id=None):
+def run(question, embedder, collection, request_id=None, **kwargs):
     rewrite_prompt = f"Rewrite the following resume-related question to be more specific:\n\n'{question}'"
     rewritten = query_phi(rewrite_prompt)
     logging.info(f"[{request_id}] Rewritten Question: {rewritten}")

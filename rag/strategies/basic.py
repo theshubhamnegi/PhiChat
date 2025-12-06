@@ -1,6 +1,6 @@
 from rag.llm import query_phi
 
-def run(question, embedder, collection, request_id=None):
+def run(question, embedder, collection, request_id=None, **kwargs):
     embedding = embedder.encode([question]).tolist()
     results = collection.query(query_embeddings=embedding, n_results=3)
     top_chunks = results["documents"][0]

@@ -7,7 +7,7 @@ def generate_queries(original_query):
         f"What experience matches: {original_query}"
     ]
 
-def run(question, embedder, collection, request_id=None):
+def run(question, embedder, collection, request_id=None, **kwargs):
     queries = generate_queries(question)
     seen = set()
     top_chunks = []
